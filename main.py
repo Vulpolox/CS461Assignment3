@@ -1,4 +1,4 @@
-import networkx as nx
+from src import ui, graph_traversal, file_io, graph_data
 
 if __name__ == '__main__':
-    print(f"{nx.__version__} is the current NetworkX version")
+    ui.display_traversal_menu()
