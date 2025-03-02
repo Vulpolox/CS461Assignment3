@@ -5,7 +5,7 @@ adj_path = Path(__file__).resolve().parent.parent / 'data' / 'Adjacencies.txt'
 coord_path = Path(__file__).resolve().parent.parent / 'data' / 'coordinates.csv'
 
 
-# output format: [(location, (x, y)), (...[...]), ...]
+# output format: [(location, (x, y)), (..., (...)), ...]
 def parse_coords():
     output = []
     with open(coord_path, mode='r') as file:

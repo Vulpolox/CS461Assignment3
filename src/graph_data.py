@@ -14,7 +14,7 @@ class GraphData:
         
         # add location-coordinate pairs to graph
         for location_cord_pair in self.coords_list:
-            self.G.add_node(location_cord_pair)
+            self.G.add_node(location_cord_pair[0], pos=location_cord_pair[1])
 
         # add adjacencies to graph
         for adjacency in self.adj_list:

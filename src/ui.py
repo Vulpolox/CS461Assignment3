@@ -40,5 +40,6 @@ def get_traversal_menu_option() -> chr:
                     "Invalid Option.  Try Again\n-----\n")
 
 def cont() -> bool:
-    return get_char("[Y] to Continue; [any key] to Quit",
-                    lambda: True).lower() != 'y'
+    return get_char("[y] to Continue; [any key] to Quit",
+                    lambda x: True,
+                    "Value Entered Is Not a Char; Try Again").lower() == 'y'
