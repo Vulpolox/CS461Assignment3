@@ -1,4 +1,7 @@
-def get_char(message: str, predicate: function, error_message:str='Error: predicate eval to false') -> chr:
+from typing import Callable
+
+
+def get_char(message: str, predicate: Callable[[str], bool], error_message:str='Error: predicate eval to false') -> chr:
     in_str = input(f'{message}\n   >>>')
     
     if not len(in_str) == 0 and predicate(in_str[0]):
@@ -8,7 +11,7 @@ def get_char(message: str, predicate: function, error_message:str='Error: predic
         return get_str(message, predicate, error_message)
 
 
-def get_str(message: str, predicate: function, error_message:str='Error: predicate eval to false') -> str:
+def get_str(message: str, predicate: Callable[[str], bool], error_message:str='Error: predicate eval to false') -> str:
     in_str = input(f'{message}\n   >>>')
     
     if predicate(in_str):

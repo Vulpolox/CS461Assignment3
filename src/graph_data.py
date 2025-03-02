@@ -2,14 +2,20 @@ import networkx as nx
 
 class GraphData:
 
-    locations = set()
+    G = nx.Graph()
 
     def __init__(self, adj_list, coords_list):
         self.adj_list = adj_list
         self.coords_list = coords_list
-        self._populate_locations()
+        self._create_graph()
 
-    
-    def _populate_locations(self):
-        for item in self.adj_list:
-            self.locations.add(item[0])
+
+    def _create_graph(self) -> None:
+        
+        # add location-coordinate pairs to graph
+        for location_cord_pair in self.coords_list:
+            self.G.add_node(location_cord_pair)
+
+        # add adjacencies to graph
+        for adjacency in self.adj_list:
+            self.G.add_edge(adjacency[0], adjacency[1])
