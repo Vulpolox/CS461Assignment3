@@ -31,4 +31,4 @@ def get_execution_time(func: Callable, timeout: float, *args) -> None:
         print(f"\n---\nTimeout exceeded after {timeout} seconds.\n---\n")
     else:
         # If the process finishes in time, print the execution time
-        print(f'\n---\nExecution Time: {return_dict["execution_time"]} μs\n---\n')
+        print(f'\n---\nExecution Time: {return_dict["execution_time"]:.4f} μs\n---\n')
