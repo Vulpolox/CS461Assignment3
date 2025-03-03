@@ -36,8 +36,8 @@ ALGORITHMS:
 def get_traversal_menu_option() -> chr:
     display_traversal_menu()
     return get_char("Choose an Algorithm", 
-                    lambda c: c in ['A', 'B', 'C', 'D', 'E'], 
-                    "Invalid Option.  Try Again\n-----\n")
+                    lambda c: c.upper() in ['A', 'B', 'C', 'D', 'E'], 
+                    "Invalid Option.  Try Again\n-----\n").upper()
 
 def cont() -> bool:
     return get_char("[y] to Continue; [any key] to Quit",
