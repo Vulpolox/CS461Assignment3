@@ -34,4 +34,7 @@ if __name__ == '__main__':
                                 f"Town Doesn't Exist\n---\nValid Towns: {graph.nodes}")
         
         chosen_algorithm = algorithm_selector(ui.get_traversal_menu_option())
-        profiling.get_execution_time(chosen_algorithm, 5, graph)
+        profiling.get_execution_time(chosen_algorithm, 5.0, 
+                                     graph, 
+                                     starting_town, 
+                                     ending_town)
