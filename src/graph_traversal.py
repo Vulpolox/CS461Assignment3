@@ -1,14 +1,11 @@
-import networkx as nx, math, time
+import networkx as nx, math, heapq
 from collections import deque
+
 
 def breadth_first_search(graph: nx.Graph, start, target) -> None:
     q = deque()
     visited = set()
     parent_map = {}
-
-    #print(f'start: {start}, end: {target}')
-    #print(f'neighbors of start:{list(graph.neighbors(start))}')
-    #return
 
     q.append(start)
     visited.add(start)
@@ -30,8 +27,32 @@ def breadth_first_search(graph: nx.Graph, start, target) -> None:
 
     print('\n---\nNo Path Exists\n---\n')
 
-def depth_first_search(graph: nx.Graph) -> None:
-    pass
+
+def depth_first_search(graph: nx.Graph, start, target) -> None:
+    stack = []
+    visited = set()
+    parent_map = {}
+
+    stack.append(start)
+    visited.add(start)
+    parent_map[start] = None
+
+    while stack:
+        current_node = stack.pop()
+
+        if current_node == target:
+            results = process_path(parent_map, graph, target)
+            print(f'\n---\nFound Path: {results[0]}\nPath Length: {results[1]:.2f}\n---\n')
+            return
+
+        for neighbor in graph.neighbors(current_node):
+            if neighbor not in visited:
+                stack.append(neighbor)
+                visited.add(neighbor)
+                parent_map[neighbor] = current_node
+
+    print('\n---\nNo Path Exists\n---\n')
+
 
 
 def iterative_deepening_dfs(graph: nx.Graph) -> None:
