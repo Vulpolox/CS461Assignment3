@@ -6,9 +6,9 @@ def breadth_first_search(graph: nx.Graph, start, target) -> None:
     visited = set()
     parent_map = {}
 
-    print(f'start: {start}, end: {target}')
-    print(f'neighbors of start:{list(graph.neighbors(start))}')
-    return
+    #print(f'start: {start}, end: {target}')
+    #print(f'neighbors of start:{list(graph.neighbors(start))}')
+    #return
 
     q.append(start)
     visited.add(start)
@@ -19,7 +19,7 @@ def breadth_first_search(graph: nx.Graph, start, target) -> None:
 
         if current_node == target:
             results = process_path(parent_map, graph, target)
-            print(f'\n---\nFound Path: {results[0]}\nPath Length: {results[1]}\n---\n')
+            print(f'\n---\nFound Path: {results[0]}\nPath Length: {results[1]:.2f}\n---\n')
             return
 
         for neighbor in graph.neighbors(current_node):
@@ -28,7 +28,7 @@ def breadth_first_search(graph: nx.Graph, start, target) -> None:
                 visited.add(neighbor)
                 parent_map[neighbor] = current_node
 
-    print('No path exists')
+    print('\n---\nNo Path Exists\n---\n')
 
 def depth_first_search(graph: nx.Graph) -> None:
     pass
@@ -49,6 +49,7 @@ def a_star_search(graph: nx.Graph) -> None:
 def distance(graph: nx.Graph, node_1, node_2) -> float:
     x1, y1 = graph.nodes[node_1]['pos']
     x2, y2 = graph.nodes[node_2]['pos']
+    x1, y1, x2, y2 = float(x1), float(y1), float(x2), float(y2)
     return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
 
@@ -58,12 +59,13 @@ def process_path(parent_map: dict, graph: nx.Graph, target) -> tuple:
     total_distance = 0.0
 
     while current_node is not None:
-        next_node = parent_map[current_node]
         path.append(current_node)
+        next_node = parent_map[current_node]
 
         if next_node is not None:
             total_distance += distance(graph, current_node, next_node)
 
         current_node = next_node
 
-    return (path.reverse(), total_distance)
+    path.reverse()
+    return (path, total_distance)
