@@ -125,13 +125,11 @@ def a_star_search(graph: nx.Graph, start, target) -> None:
         return distance(graph, node, target)
 
     priority_queue = []
-    visited = set()
     parent_map = {}
     g_score = {node: float('inf') for node in graph.nodes}
     g_score[start] = 0
 
     heapq.heappush(priority_queue, (heuristic(start), start))
-    visited.add(start)
     parent_map[start] = None
 
     while priority_queue:
@@ -149,7 +147,6 @@ def a_star_search(graph: nx.Graph, start, target) -> None:
                 g_score[neighbor] = tentative_g_score
                 f_score = tentative_g_score + heuristic(neighbor)
                 heapq.heappush(priority_queue, (f_score, neighbor))
-                visited.add(neighbor)
                 parent_map[neighbor] = current_node
 
     print('\n---\nNo Path Exists\n---\n')
