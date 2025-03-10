@@ -14,7 +14,7 @@
   * Run `python main.py`
 * The program should now be running
 
-# Ouput Screenshots (Oxford -> Hays)
+# Output Screenshots (Oxford -> Hays)
 
 ### BFS
 ![](https://github.com/Vulpolox/CS461Assignment3/blob/main/OutputScreenshots/BFS.png)
